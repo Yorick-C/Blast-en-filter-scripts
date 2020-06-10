@@ -1,9 +1,12 @@
 import re
 
-output = open('result81-90.txt','a')
+output = open('zet hier nieuwe file naam uit voor de resultaten','a')
 n = 0
 
-with open('file-81-90blast.xml','r') as xml:
+with open('zet hier een xml file dat uit het blast script is gekregen','r') as xml:
+        # looped over het xml file en stript als die specifiece lines tegen komt
+        # deze lines worden uiteindelijk toegevoegd aan een file die file wrdt dan gebruikt
+        # voor alle resultaten
         for line in xml:
             if re.search('<Iteration_query-def>', line) != None:
                 n = n + 1
@@ -47,7 +50,7 @@ with open('file-81-90blast.xml','r') as xml:
                 line = line.strip('<Hsp_evalue>')
                 line = line.rstrip('</')
                 e_val = line
-
+                # Schrijft hier alles op in een nieuwe file dat bovenaan een naam heeft gekregen
                 output.write(str(n)+'\t'+query_def+'\t'+hit_def+'\t'+hit_acc+'\t'+e_val+'\t'+score+'\n')
 
 output.close()
